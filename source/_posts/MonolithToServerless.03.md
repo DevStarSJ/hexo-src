@@ -7,6 +7,7 @@ categories:
 tags:
 - AWS
 - Lambda
+- Serverless
 ---
 
 # Monolith to Serverless using AWS Lambda
