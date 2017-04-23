@@ -1,6 +1,6 @@
 ---
 title: Deploying .NET Core Web App with Visual Studio and Git
-date: 2016-09-17 00:00:00
+date: 2016-05-11 00:00:00
 categories:
 - C#
 - ASP.NET Core
