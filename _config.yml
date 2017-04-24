@@ -64,7 +64,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 ## git clone https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak.git themes/tranquilpeak
-theme: tranquilpeak
+theme: hueman
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
