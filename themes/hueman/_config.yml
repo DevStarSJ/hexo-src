@@ -8,30 +8,32 @@ menu:
 # Customize
 customize:
     logo:
-        width: 165
-        height: 60
-        url: images/logo-header.png
+        width: 100
+        height: 100
+        url: images/sjyun.jpg
     theme_color: '#006bde'
     highlight: androidstudio
     sidebar: left # sidebar position, options: left, right
     thumbnail: true # enable posts thumbnail, options: true, false
     favicon: # path to favicon
     social_links: # for more icons, please see http://fontawesome.io/icons/#brand
-        twitter: /
-        facebook: https://www.facebook.com/seokjoon.yun.9
-        google-plus: https://plus.google.com/u/1/108379332089647292574
+        #twitter: /
+        facebook-square: https://www.facebook.com/seokjoon.yun.9
         github: https://github.com/DevStarSJ
-        weibo: /
-        rss: /
+        slideshare: https://www.slideshare.net/seokjoonyun9
+        linkedin-square: https://www.linkedin.com/in/sjyun
+        google-plus: https://plus.google.com/u/1/108379332089647292574
+        #weibo: /
+        #rss: /
 
 # Widgets
 widgets:
-    - recent_posts
     - category
-    - archive
-    - tag
     - tagcloud
     - links
+#    - recent_posts
+#    - archive
+#    - tag
 
 # Search
 search:
