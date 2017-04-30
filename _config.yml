@@ -72,3 +72,11 @@ deploy:
   type: git
   repo: https://github.com/DevStarSJ/DevStarSJ.github.io
   branch: master
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+
