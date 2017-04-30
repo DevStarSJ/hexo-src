@@ -3,10 +3,10 @@ title: Doing Math with Python
 date: 2016-07-09 00:00:00
 categories:
 - Python
-- DoingMathWithPython
+- DataScience
 tags:
 - Python
-- Math
+- DataScience
 ---
 
 # Doing Math with Python (파이썬으로 풀어보는 수학)
