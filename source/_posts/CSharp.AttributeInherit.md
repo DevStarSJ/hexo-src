@@ -17,7 +17,7 @@ C# Attribute class 생성 및 사용, 상속시에 동작 등에 대해서 확�
 ## Step 1. Attribute 존재여부 검사
 
 #### AttributeInheritTest.01.cs
-```C#
+```CSharp
 using System;
 
 public class Test1Attribute : Attribute
@@ -70,7 +70,7 @@ Test1Attribute
 `foreach` 내부만 수정
 
 #### AttributeInheritTest.02.cs
-```C#
+```CSharp
 foreach (var a in attributes)
 {
     Console.WriteLine(a.GetType().ToString());
@@ -98,7 +98,7 @@ Test1Attribute
 `Child` 정의 및 `propertyInfo` 생성 부분만 수정
 
 #### AttributeInheritTest.03.cs
-```C#
+```CSharp
 public class Child : Parent
 {
 }
@@ -120,7 +120,7 @@ Test1Attribute
 `Parent`의 `id`를 `virtual`처리 하였고, `Child`의 `id`를 `override`한 후 `Test2Attribute`만 재정의 하였습니다.
 
 #### AttributeInheritTest.04.cs
-```C#
+```CSharp
 public class Parent
 {
     [Test1(1)]

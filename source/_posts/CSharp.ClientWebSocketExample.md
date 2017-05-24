@@ -22,7 +22,7 @@ ASP.NET을 사용하지 않고 일반적인 C# (Console, Winform) 에서 WebSock
 
 `Nuget Manager`에서 `WebSocketSharp`를 `include prerelease`를 체크한 상태에서 검색해서 설치하세요.
 
-```C#
+```CSharp
 using WebSocketSharp;
 
 WebSocket ws = new WebSocket(url: "ws://localhost:5000");
@@ -48,7 +48,7 @@ nuget manager에서 `websocket-sharp.clone` 로 검색하면 나옵니다.
 `OnMessage` 이벤트를 생성자에게 입력해줘야 하는데, 타입이 까다로워서 쉽지 않습니다.
 (저도 구현해보려고 시도하다가 귀찮아서 관뒀습니다.)
 
-```C#
+```CSharp
 using WebSocketSharp;
 
 WebSocket ws = new WebSocket(url: "ws://localhost:5000");
@@ -73,7 +73,7 @@ Console.WriteLine(result.ToString()); // true
 해당 함수를 이용해서 `Event`를 만들어서 구현을 해주면 편리하게 사용이 가능할거라 생각됩니다.
 귀찮아서 저도 그렇게 구현해 보려다 말았습니다.
 
-```C#
+```CSharp
 using System.Net.WebSockets;
 
 ClientWebSocket ws = new ClientWebSocket();

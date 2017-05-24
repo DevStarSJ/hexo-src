@@ -11,7 +11,7 @@ tags:
 
 # Get Request Body in Action Method
 
-```C#
+```CSharp
 string body = "";
 Request.InputStream.Seek(0, SeekOrigin.Begin);
 using (StreamReader reader = new StreamReader(Request.InputStream))

@@ -126,7 +126,7 @@ View 에서 호출되는 Action Method를 의미합니다.
 `[ChileActionOnly]` 이란 attribute를 붙이면 Routing System에서 사용되지 않고 순수히 View에서 호출할 경우에만 동작하는 것을 의미합니다.
 
 * HomeController.cs
-```C#
+```CSharp
 ...
 [ChildActionOnly]
 public ActionResult Time()
@@ -153,7 +153,7 @@ Child Action에 매개변수가 필요한 경우에는 무명형식을 이용해
 단 파라메터의 이름이 같아야 합니다.
 
 * HomeController.cs
-```C#
+```CSharp
 ...
 [ChildActionOnly]
 public ActionResult Time(DateTime time)

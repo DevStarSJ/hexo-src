@@ -64,7 +64,7 @@ C# 도 편의상 선언과 동시에 초기값을 써 줄 수는 있지만, 아�
 
 강제로 `deadlock`을 발생시키는 code를 만들어 보았습니다.
 
-```C#
+```CSharp
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -109,7 +109,7 @@ class Program
 
 참고로 아래 예제도 썩 그렇게 좋은 예제코드는 아닙니다.
 
-```C#
+```CSharp
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -165,7 +165,7 @@ class Program
 이렇게 구현할 경우 원래 `class`에서 sync한 구현과 async한 구현이 모두 필요할 경우 1번과 같은 code 모양이 될 경우가 많습니다.  
 `static constructor`에서 호출하는 `async method`가 다른 class의 method일 경우에는 `deadlock`이 걸리지 않았습니다.  
 
-```C#
+```CSharp
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -217,7 +217,7 @@ class Program
 하지만 여러 thread에서 `Init()` 함수가 호출될 가능성이 있을 경우에는 사용자가 별도로 `lock`을 걸어서 호출을 해야 합니다.  
 해당 기능은 `clsss`가 최초로 사용되기 이전 시점의 아무 곳에서나 호출이 가능하므로, `lock`이 필요없는 적당한 시점에 호출시켜 주는 것이 좋습니다.  
 
-```C#
+```CSharp
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

@@ -149,7 +149,7 @@ dotnet restore
 
 `Startup.cs`파일을 추가하려 다음의 내용으로 작성합니다.
 
-```C#
+```CSharp
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -172,7 +172,7 @@ namespace aspnetcoreapp
 
 `Program.cs`파일을 다음과 같이 수정해주세요.
 
-```C#
+```CSharp
 using System;
 using Microsoft.AspNetCore.Hosting;
 

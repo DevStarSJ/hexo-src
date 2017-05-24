@@ -78,7 +78,7 @@ INSERT INTO EMP VALUES (0, 'LUNA', 'MASTER',     7782, '1982-01-23', 1300, NULL,
 
 테스트를 위해 실행시킨 LINQ 문장은 아래와 같다.
 
-```C#
+```CSharp
 var emp = context.EMP.ToList();
 var dept = context.DEPT.ToList();
 
@@ -102,7 +102,7 @@ var j6 = context.EMP.GroupJoin(context.DEPT, e => e.DEPTNO, d => d.DEPTNO, (e, d
 
 **EMP** 와 **DEPT**는 테이블에 들어가 있는 레코드 수가 그대로 반영되었다.  
 
-```C#
+```CSharp
 var j1 = context.EMP.Join(context.DEPT, 
     e => e.DEPTNO, d => d.DEPTNO,
     (e, d) => new {e, d})
@@ -111,7 +111,7 @@ var j1 = context.EMP.Join(context.DEPT,
 
 **j1**은 보통 많이쓰는 `Join`으로 실행시켰다. inner join을 수행하므로 마지막에 테스트로 넣은 **LUNA**의 경우 **DEPTNO**로 조인이 되지 않아서 14개가 되는게 맞다.  
 
-```C#
+```CSharp
 var j2 = context.EMP.Join(context.DEPT.DefaultIfEmpty(),
     e => e.DEPTNO, d => d.DEPTNO,
     (e, d) => new { e, d })
@@ -120,7 +120,7 @@ var j2 = context.EMP.Join(context.DEPT.DefaultIfEmpty(),
 
 **j2**는 Microsoft 공식 문서에 나와있는 방법대로 inner table 쪽에 `DefaultIfEmpty`를 수행했는데도 14개로 inner join한 것과 같은 결과가 나왔다.  
 
-```C#
+```CSharp
 var j3 = context.EMP.GroupJoin(context.DEPT,
     e => e.DEPTNO, d => d.DEPTNO,
     (e, d) => new { e, d })
@@ -135,7 +135,7 @@ var j3 = context.EMP.GroupJoin(context.DEPT,
 이제 원하는 결과를 얻었다고 생각이되지만, 나머지 항목에 대해서는 `d`가 `Collection`으로 되어 있으며 그 안에 `DEPT`가 1개씩 들어가 있어서 별로 보기에 좋지가 않다.
 일단 여기서 넘어가고 아래에서 좀 더 이쁘게 만들어 보겠다.
 
-```C#
+```CSharp
 var j4 = context.DEPT.GroupJoin(context.EMP,
     d => d.DEPTNO, e => e.DEPTNO,
     (d, e) => new { d, e })
@@ -147,7 +147,7 @@ var j4 = context.DEPT.GroupJoin(context.EMP,
 
 ![](/images/LinqOuterJoin.02.png)
 
-```C#
+```CSharp
 var j5 = context.EMP.GroupJoin(context.DEPT,
     e => e.DEPTNO, d => d.DEPTNO,
     (e, d) => new { e, d = d.DefaultIfEmpty() })

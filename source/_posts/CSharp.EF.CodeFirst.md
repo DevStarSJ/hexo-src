@@ -38,7 +38,7 @@ Entity Framework 4.1 이후부터 지원해주는 방식이며, `Domain Driven D
 
 아래와 같이 `School` 과 `Standard`라는 2개의 Domain Model을 정의합니다.
 
-```C#
+```CSharp
 class Student
 {
     public int       StudentID   { get; set; }
@@ -64,13 +64,13 @@ class Standard
 
 #### 3. Entity Framework Context 정의
 
-```C#
+```CSharp
 using System.Data.Entity;
 ```
 
 DbContext를 사용하기 위해서는 `System.Data.Entity`를 `using`해주면 편합니다.
 
-```C#
+```CSharp
 class SchoolContext : DbContext
 {
     public DbSet<Student> Students { get; set; }
@@ -85,7 +85,7 @@ Console Application Project에서 default일 경우 Visual Studio와 함께 설�
 
 #### 4. Context 실행
 
-```C#
+```CSharp
 class Program
 {
     static void Main(string[] args)
@@ -116,7 +116,7 @@ Database에 따로 Table을 생성하지 않고 위 Code를 실행하면 자동�
 
 먼저 `Teacher` Model을 추가한 뒤,
 
-```C#
+```CSharp
 class Teacher
 {
     public int TeacherID { get; set; }
@@ -126,7 +126,7 @@ class Teacher
 
 `Student`에 `Teacher`의 참조를 추가합니다.
 
-```C#
+```CSharp
 class Student
 {
     public int StudentID { get; set; }
@@ -163,7 +163,7 @@ class Student
 
 #### 3. `Database Initializer` 선언
 
-```C#
+```CSharp
 class SchoolInitializer : DropCreateDatabaseIfModelChanges<SchoolContext>
 {
     protected override void Seed(SchoolContext context)
@@ -181,7 +181,7 @@ class SchoolInitializer : DropCreateDatabaseIfModelChanges<SchoolContext>
 Application 실행시 `Database Initializer`를 먼저 실행시켜 주면 오류 없이 Table이 수정됩니다. 
 심지어 DbSet Property에 Teacher를 추가하지 않았는데도 불구하고 Teacher Table이 추가되었습니다.
 
-```C#
+```CSharp
 class Program
 {
     static void Main(string[] args)

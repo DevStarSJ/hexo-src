@@ -34,7 +34,7 @@ Controller가 그 중심에서 처리를 수행합니다.
 Action에서는 사용자가 요청하는 작업을 정의합니다.
 기본적으로 Action의 이름과 그 결과를 출력하는 View의 이름은 같습니다.
 
-```C#
+```CSharp
 public class HomeController : Controller
 {
     public ActionResult Index()
@@ -60,7 +60,7 @@ public class HomeController : Controller
 
 지금은 잘 사용하지 않는 방법입니다.
 
-```C#
+```CSharp
 //System.Web.Mvc.IController Interface
 public interface IController
 {
@@ -70,7 +70,7 @@ public interface IController
 
 `Execute()`라는 하나의 구현을 제공해주기 때문에 해당 method 안에서 `RequestContext`를 분석하여 실행합니다.
 
-```C#
+```CSharp
 public BasicController : IController
 {
     public void Execute (RequestContext requestContext)
@@ -157,7 +157,7 @@ Action Method의 처리 결과를 사용자에게 전달(`return`)해줘야 합�
 
 지금은 잘 사용하지 않는 방법이지만 `IController`를 구현했을 경우에는 직접 구현을 해줘야만 했습니다.
 
-```C#
+```CSharp
 public class BaseController : IController
 {
     public void Execute(RequestContext requestContext)
@@ -177,7 +177,7 @@ public class BaseController : IController
 
 물론 `Controller`를 상속 받았을 경우에도 직접 구현은 가능합니다.
 
-```C#
+```CSharp
 public class HomeController : Controller
 {
     public void Index()
@@ -214,7 +214,7 @@ MVC Framework는 전달받은 `ActionResult`에 해당하는 `ExecuteResult()` �
 
 ActionResult 중 가장 기본인 `ViewResult`에 대한 간단한 사용법 입니다.
 
-```C#
+```CSharp
 public ViewResult Index()
 {
     return View("Homepage"); // Route System에게 Homepage라는 segment에 해당하는 View를 rendering하도록 전달
@@ -231,7 +231,7 @@ public ViewResult Index()
 
 `ViewModel`(View에서 사용할 Model)을 parameter로 전달하면 됩니다.
 
-```C#
+```CSharp
 public class HomeController : Controller
 {
     public ViewResult Index()
@@ -277,7 +277,7 @@ public class HomeController : Controller
 
 Action Method에서 `ViewBag`이라는 dynamic object에 임의의 속성을 정의하면 View에서 읽을 수 있습니다.
 
-```C#
+```CSharp
 public class HomeController : Controller
 {
     public ViewResult Index()
@@ -301,7 +301,7 @@ public class HomeController : Controller
 여러 개의 값을 전달할 경우 `ViewModel`보다 편리하게 사용할 수 있습니다.
 위 예제와 같이 `DateTime` 과 `string` 2개의 값을 `ViewModel`로 전달하고자 한다면, 따로 정의를 해야합니다.
 
-```C#
+```CSharp
 public class IndexViewModel
 {
     public DateType Now;
@@ -325,7 +325,7 @@ Action Method의 결과를 직접적으로 출력하는게 아니라, 다른 URL
 - `HTTP 301` : 영구적인 재전송을 의미합니다. 이 경우 원본 URL은 더이상 사용되지 않을 것이고, `Redirect`된 새로운 URL이 앞으로 사용됩니다.
 
 ### 5.1 Action Method에서 Redirect하는 방법
-```C#
+```CSharp
 public RedirectResult Index()
 {
     return Redirect("/Example/Index"); // 문자열로 URL을 작성하여 Redirect
@@ -353,7 +353,7 @@ public RedirectToRouteResult Index()
 
 Redirect하기 전에 TempData에 필요한 값들을 저장합니다.
 
-```C#
+```CSharp
 public RedirectToRouteResult Index()
 {
     TempData["MyName"] = "Luna";
@@ -368,7 +368,7 @@ public RedirectToRouteResult Index()
 
 이 값을 View까지 전달하고자 한다면 TempData에서 읽어서 ViewBag이나 ViewModel에 넣어서 전송을 하면 됩니다.
 
-```C#
+```CSharp
 public ViewResult Hello()
 {
     ViewBag.MyName = TempData["MyName"];
@@ -394,7 +394,7 @@ My Name is @TempData["MyName"]
 
 ## 6. HTTP Code, Error 전송
 
-```C#
+```CSharp
 public HttpStatusCodeResult StatusCode()
 {
     return new HttpStatusCodeResult(404, "URL cannot be serviced"); // 직접 생성해서 반환

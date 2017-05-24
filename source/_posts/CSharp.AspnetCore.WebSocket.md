@@ -35,7 +35,7 @@ tags:
 `Startup.cs` 파일을 열어서 `public void Configure()` 함수에 아래 Code를 추가합니다.
 단 `app.UseMvc()`보다 위에 위치해야 합니다.
 
-```C#
+```CSharp
 app.UseWebSockets();
 app.Use(async (http, next) =>
 {
@@ -87,7 +87,7 @@ app.Use(async (http, next) =>
 Client에서 Connection을 연결할때마다 `app.Use`안에 선언한 함수가 실행됩니다.
 Request가 아닌 경우에는 그냥 무시 (`next();`)를 하며 `Request`인 경우에는 `Accept`수행 후 `Receive`작업을 기다리며 Pending 상태가 됩니다.
 
-```C#
+```CSharp
 var webSocket = await http.WebSockets.AcceptWebSocketAsync();
 
 if (webSocket != null && webSocket.State == WebSocketState.Open)
@@ -107,7 +107,7 @@ if (webSocket != null && webSocket.State == WebSocketState.Open)
 Message가 도착하면 `await webSocket.ReceiveAsync()`의 Pending이 해제되면서 다음 Line을 수행합니다.
 현재 예제는 Text 타입에 대해서만 그대로 Client에게 echo message를 전달하고 있습니다.
 
-```C#
+```CSharp
 switch (received.MessageType)
 {
     case WebSocketMessageType.Text:
@@ -121,7 +121,7 @@ switch (received.MessageType)
 편의상 추가로 `Controller`를 추가하지 않고 `Home` Controller에 `Chat`이라는 `Action Method`를 추가하도록 하겠습니다.
 `Controllers/HomeController.cs`파일을 열어서 아래 Action을 추가해 주세요.
 
-```C#
+```CSharp
 public ActionResult Chat()
 {
     return View();
@@ -197,7 +197,7 @@ public ActionResult Chat()
 
 `Startup.cs` 파일의 `public class Startup`에 thread-safety한 map을 하나 선언합니다.
 
-```C#
+```CSharp
 ConcurrentBag<WebSocket> _sockets = new ConcurrentBag<WebSocket>();
 ```
 
@@ -206,14 +206,14 @@ ConcurrentBag<WebSocket> _sockets = new ConcurrentBag<WebSocket>();
 다음으로는 Client에서 접속시 `_sockets`에 socket들을 저장해 놓습니다.
 `// Handle the socket here` 바로 윗 부분에 아래 Code를 추가합니다.
 
-```C#
+```CSharp
 _sockets.Add(webSocket);
 ```
 
 Client에게 `SendAsync()`를 하는 부분을 전체 Client에게 전송하도록 수정합니다.
 `// Handle request here` 아래에 있는 `await webSocket.SendAsync()`줄을 지우고 아래 Code를 입력해주세요.
 
-```C#
+```CSharp
 foreach (var socket in _sockets)
 {
     await socket.SendAsync(buffer, WebSocketMessageType.Text, true, token);

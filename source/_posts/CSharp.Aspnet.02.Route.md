@@ -29,7 +29,7 @@ http://mySite.com/Home/Index
 ## 2. RouteConfig.cs
 
 ### 2.1 `Global.asax.cs` 를 보면 아래와 같이 Route를 설정하는 Code가 있습니다.
-```C#
+```CSharp
 RouteConfig.RegisterRoutes(RouteTable.Routes);
 ```
 
@@ -72,7 +72,7 @@ ex) `url : "{controller}/{action}/{id}`로 설정하였을 경우,
 
 기본값 설정이 가능합니다.
 
-```C#
+```CSharp
 defaults : new { controller = "Product", action = "Index", id = "Luna" }
 ```
 
@@ -88,7 +88,7 @@ URL parameter에 제약사항을 설정합니다.
 
 #### 3.4.1 Regular Expression (정규표현식)을 이용하여 검사
 
-```C#
+```CSharp
 constraints: new { page = @"\d+" }
 ```
 
@@ -96,7 +96,7 @@ constraints: new { page = @"\d+" }
 
 #### 3.4.2 여러 개의 값을 지정하여 검사
 
-```C#
+```CSharp
 constraints: new { page = @"\d+", action="^Index$|^About$"}
 ```
 
@@ -104,7 +104,7 @@ constraints: new { page = @"\d+", action="^Index$|^About$"}
 
 #### 3.4.3 HTTP Method를 사용하여 검사
 
-```C#
+```CSharp
 constraints: new { page = @"\d+", action="^Index$|^About$",
     httpMethod = new HttpMethodConstarint("GET", "POST")}
 ```
@@ -113,7 +113,7 @@ constraints: new { page = @"\d+", action="^Index$|^About$",
 
 #### 3.4.4 형식,범위 등의 제약조건
 
-```C#
+```CSharp
 constraints: new { page = @"\d+", action="^Index$|^About$",
     httpMethod = new HttpMethodConstarint("GET", "POST"), 
     id = new RangeRouteConstraint(10, 20) }
@@ -121,7 +121,7 @@ constraints: new { page = @"\d+", action="^Index$|^About$",
 
 위의 경우 추가로 id값이 10에서 20 사이에 경우에만 허용합니다.  
 
-```C#
+```CSharp
 using System.Web.Mvc.Routing.Constarints;
 ```
 
@@ -143,7 +143,7 @@ using System.Web.Mvc.Routing.Constarints;
 
 ex)
 
-```C#
+```CSharp
 routes.MapRoute(
     name: null,
     url: "Luna{controller}/{action}"
@@ -159,7 +159,7 @@ routes.MapRoute(
 - `http://mySite.com/LunaProduct/Index`로 접근할 경우 `Product` controller의 `Index` Action Method를 실행하게 되며,
 - `http://mySite.com/Product/Index`로 접근할 경우에도 `Product` controller의 `Index` Action Method를 실행하게 됩니다.
 
-```C#
+```CSharp
 routes.MapRoute(
     name: null,
     url: "{controller}/{action}"
@@ -187,7 +187,7 @@ routes.MapRoute(
 `RouteConfig.cs`의 `RegisterRoutes(RouteCollection routes)`함수 내에  `routes.MapMvcAttributeRoutes();`를 호출하면 Attribute 기반의 Route 기능을 활성화합ㄴ다.
 
 ### 5.2  Attribute Route 설정
-```C#
+```CSharp
 public class CustomerController : Controller
 {
     [Route("Test")]
@@ -200,7 +200,7 @@ public class CustomerController : Controller
 
 와 같이 경우 `http://mySite.com/Test`로 접근할 경우 `Customer` Controller의 `Index` Action method가 실행됩니다.
 
-```C#
+```CSharp
 [Route("User/Add/{user}/{id}"]
 public string Create(string user, int id) { ... }
 ```
@@ -212,7 +212,7 @@ public string Create(string user, int id) { ... }
 
 ### 5.3 Prefix(접두어) 사용
 
-```C#
+```CSharp
 [RoutePrefix("User")]
 public class UserController : Controller
 {

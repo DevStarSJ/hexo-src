@@ -27,7 +27,7 @@ PM> Install-Package Newtonsoft.Json
 
 사용시 소스코드에서 아래의 `namespace`를 추가해 주시면 됩니다.
 
-```C#
+```CSharp
 using Newtonsoft.Json.Linq;
 ```
 
@@ -60,7 +60,7 @@ using Newtonsoft.Json.Linq;
 
 #### 3.1.1 기본적인 사용법
 
-```C#
+```CSharp
 var json = new JObject();
 json.Add("id", "Luna");
 json.Add("name", "Silver");
@@ -78,7 +78,7 @@ Console.WriteLine(json.ToString());
 
 #### 3.1.2 JSON 형식의 문자열로 생성
 
-```C#
+```CSharp
 var json2 = JObject.Parse("{ id : \"Luna\" , name : \"Silver\" , age : 19 }");
 json2.Add("blog", "devluna.blogspot.kr");
 
@@ -95,7 +95,7 @@ Console.WriteLine(json2.ToString());
 
 #### 3.1.3 다른 class Object로부터 생성
 
-```C#
+```CSharp
 User u = new User { id = "SJ", name = "Philip", age = 25 };
 var json3 = JObject.FromObject(u);
 
@@ -112,7 +112,7 @@ Console.WriteLine(json3.ToString());
 
 #### 3.1.4 무명형식으로 생성
 
-```C#
+```CSharp
 var json4 = JObject.FromObject(new { id = "J01", name = "June", age = 23 });
 
 Console.WriteLine(json4.ToString());
@@ -128,7 +128,7 @@ Console.WriteLine(json4.ToString());
 
 #### 3.1.5 다른 JObject를 Element로 추가
 
-```C#
+```CSharp
 var json5 = JObject.Parse("{ id : \"sjy\" , name : \"seok-joon\" , age : 27 }");
 json5.Add("friend1", json);
 json5.Add("friend2", json2);
@@ -173,7 +173,7 @@ Console.WriteLine(json5.ToString());
 
 `[ ]` 연산자에 key값을 넣어주면 해당 value를 얻을 수 있습니다.
 
-```C#
+```CSharp
 var json4_name = json4["name"];
 
 Console.WriteLine(json4_name);
@@ -187,7 +187,7 @@ June
 
 `.Remove(key)`를 이용해서 삭제가 가능합니다.  
 
-```C#
+```CSharp
 json4.Remove("name");
 
 Console.WriteLine(json4.ToString());
@@ -202,7 +202,7 @@ Console.WriteLine(json4.ToString());
 
 `.RemoveAll()`로 모든 Element를 다 삭제 할 수도 있습니다.
 
-```C#
+```CSharp
 json5.RemoveAll();
 
 Console.WriteLine(json5.ToString());
@@ -220,7 +220,7 @@ Element 입력시 key를 가지지 않는 다는 것을 빼고는 JObject와 거
 
 #### 4.1.1 기본적인 사용법
 
-```C#
+```CSharp
 var jarray = new JArray();
 jarray.Add(1);
 jarray.Add("Luna");
@@ -239,7 +239,7 @@ Console.WriteLine(jarray.ToString());
 
 ### 4.1.2 JObject를 Element로 추가
 
-```C#
+```CSharp
 var jFriends = new JArray();
 jFriends.Add(json);
 jFriends.Add(json2);
@@ -276,7 +276,7 @@ Console.WriteLine(jFriends.ToString());
 
 #### 4.1.3 JArray를 Element로 추가
 
-```C#
+```CSharp
 var jarray2 = new JArray();
 jarray2.Add(jarray);
 jarray2.Add(jFriends);
@@ -322,7 +322,7 @@ Console.WriteLine(jarray2.ToString());
 
 `[ ]` 연산자로 읽을 수 있습니다.
 
-```C#
+```CSharp
 var jf0 = jFriends[0];
 
 Console.WriteLine(jf0.ToString());
@@ -337,7 +337,7 @@ Console.WriteLine(jf0.ToString());
 ```
 
 `for` , `foreach`로 iteration이 가능합니다.
-```C#
+```CSharp
 foreach(JObject fElement in jFriends)
 {
     var fName = fElement["name"] ?? "<NULL>";
@@ -354,7 +354,7 @@ Philip
 
 #### 4.2.2 Element값 삭제하기
 
-```C#
+```CSharp
 jFriends.Remove(jFriends[1]);
 jFriends.Remove(jFriends[2]);
 
@@ -378,7 +378,7 @@ Console.WriteLine(jFriends.ToString());
 
 ## 5. JObject에 JArray 추가하기
 
-```C#
+```CSharp
 json2.Add("Friends", jFriends);
 
 Console.WriteLine(json2.ToString());
