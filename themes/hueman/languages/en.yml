@@ -22,6 +22,7 @@ sidebar:
     links: 'links'
     tags: 'tags'
     tag_cloud: 'tag cloud'
+    catalogue: 'Catalog'
 article:
     comments: 'Comments'
     share: 'Share'
